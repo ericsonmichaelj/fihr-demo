@@ -68,13 +68,15 @@ export default function App() {
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="/">1Up Health Demo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Nav className="mr-auto">
-        { accessToken ? <Nav.Link href={`https://quick.1up.health/connect/11046?access_token=${accessToken}`}>Epic</Nav.Link> : '' }
-        { window.location.pathname.toLowerCase() !== '/login' ? <Nav.Link href="/login">Login</Nav.Link>: '' }
-        </Nav>
-        <Nav>
-        <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
-        </Nav>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+            { accessToken ? <Nav.Link href={`https://quick.1up.health/connect/4706?access_token=${accessToken}`}>Epic</Nav.Link> : '' }
+            { window.location.pathname.toLowerCase() !== '/login' ? <Nav.Link href="/login">Login</Nav.Link>: '' }
+            </Nav>
+            <Nav>
+            <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
+            </Nav>
+        </Navbar.Collapse>
       </Navbar>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
