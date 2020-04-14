@@ -91,7 +91,7 @@ function Patient({accessToken, match }) {
   }
   useEffect(() => {
     fetchPatientData(`https://api.1up.health/fhir/dstu2/Patient/${patientId}/$everything`)
-  }, [accessToken]);
+  }, []);
   const totalPages = patientCallData.length
   return (
     <div className="App">

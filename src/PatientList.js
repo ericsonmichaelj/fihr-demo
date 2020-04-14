@@ -3,6 +3,7 @@ import * as axios from 'axios'
 import qs from 'querystring'
 import { isArray } from 'util';
 import { Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function PatientBasicInfo({entry}) {
   if(entry && entry.resource &&  isArray(entry.resource.name)) {
@@ -49,7 +50,7 @@ function PatientList({accessToken}) {
   }, []);
   return (
     <Container style={{marginTop: '1em'}}>
-      <h2>Click on a patient to learn more:</h2>
+      { patientList.lenth ? <h2>Click on a patient to learn more:</h2>: '' }
       <div>
         { patientList.map((entry) => {
           return <PatientBasicInfo entry={entry} key={entry.fullUrl} />
