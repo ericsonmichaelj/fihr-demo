@@ -74,7 +74,6 @@ function Patient({accessToken, match }) {
     setPatientCallData([...patientCallData, response.data])
     } catch (error) {
       if(error.response) {
-        console.log(error.response)
         if(error.response.status === 401) {
           const queryPath = qs.stringify({
             sessionExpired: true,
@@ -94,7 +93,6 @@ function Patient({accessToken, match }) {
     fetchPatientData(`https://api.1up.health/fhir/dstu2/Patient/${patientId}/$everything`)
   }, [accessToken]);
   const totalPages = patientCallData.length
-  console.log('this is the accessTOken', accessToken)
   return (
     <div className="App">
       { totalPages ? 

@@ -3,6 +3,7 @@ import React,{ useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
+  Redirect,
   Route
 } from "react-router-dom";
 import Patient from './Patient'
@@ -73,6 +74,9 @@ export default function App() {
           </Route>
           <Route path="/error">
             <div style={{color: 'red'}}>Oops! Something went wrong, please contact us.</div>
+          </Route>
+          <Route path="/callback">
+            <Redirect to="/"/>
           </Route>
           <Route exact path="/">
           { attemptRetrieval ? <PatientList accessToken={accessToken}/>: <div>Loading PatientList Page...</div> }

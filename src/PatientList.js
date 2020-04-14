@@ -6,7 +6,6 @@ import { Container } from 'react-bootstrap'
 
 function PatientBasicInfo({entry}) {
   if(entry && entry.resource &&  isArray(entry.resource.name)) {
-    console.log()
     return <a 
     href={`/patient/${entry.resource.id}`}
     style={ {color: 'blue', textDecoration: 'underline', margin: '5px'} }>{entry.resource.name[0].text}</a> 
@@ -53,7 +52,6 @@ function PatientList({accessToken}) {
       <h2>Click on a patient to learn more:</h2>
       <div>
         { patientList.map((entry) => {
-          console.log(entry.fullUrl)
           return <PatientBasicInfo entry={entry} key={entry.fullUrl} />
         }) }
 
