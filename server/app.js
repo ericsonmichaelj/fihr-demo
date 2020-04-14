@@ -1,7 +1,10 @@
 const express = require('express');
 const logger = require('./utils/logger');
+const bodyParser = require('body-parser')
 
 const app = express();
+
+app.use(bodyParser.json())
 
 const authenticate = require('./middleware/authenticate');
 

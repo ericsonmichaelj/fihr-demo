@@ -1,9 +1,19 @@
 import React, { useEffect, useRef } from 'react'
 import { Card, Container, Row } from 'react-bootstrap'
 import qs from'querystring'
-export default function Login({handleSubmit, retrievedTokenFromServer}) {
+
+
+
+
+export default function Login({handleSubmit, retrievedTokenFromServer, errorMessage}) {
   const prevRetrivedTokenFromServerRef = useRef();
-  const { sessionExpired, redirect, isLoggedIn } = qs.parse(window.location.search.substr(1))
+  const { sessionExpired, redirect, isLoggedOut } = qs.parse(window.location.search.substr(1))
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    const user = document.getElementById("loginUserId").value
+    handleSubmit(user)
+  }
 
   useEffect(() => {
     // went from true state to false state
@@ -26,14 +36,15 @@ export default function Login({handleSubmit, retrievedTokenFromServer}) {
       <Row style={{'flexDirection': 'column'}}>
         <Card style={{padding: '2em', alignSelf: 'center', marginTop: '3em'}}>
           { sessionExpired ? <p style={{color: 'red'}}>Your session has expired</p> : ''}
-          { isLoggedIn ? <p style={{color: 'red'}}>Please log in to continue</p> : ''}
+          { isLoggedOut ? <p style={{color: 'red'}}>Please log in to continue</p> : ''}
+          { errorMessage ? <p style={{color: 'red'}}>{ errorMessage } </p> : ''}
           <h2>Please Login</h2>
         <form>
         <div className="form-group">
           <label htmlFor="userId">Username</label>
           <input type="userId" className="form-control" id="loginUserId" aria-describedby="userIdHelp" placeholder="Enter userId" />
         </div>
-          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={onSubmit}>Submit</button>
         </form>
         </Card>
       </Row>

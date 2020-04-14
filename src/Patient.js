@@ -3,7 +3,7 @@ import { FhirResource, fhirVersions } from 'fhir-react';
 import './App.css';
 import 'fhir-react/build/style.css';
 import 'fhir-react/build/bootstrap-reboot.min.css';
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import { Pagination } from 'react-bootstrap'
@@ -45,8 +45,8 @@ function PatientPanel ({patientData, onNext, onBack, totalPages}) {
   )
 }
 
-function Patient({accessToken}) {
-  let history = useHistory();
+function Patient({accessToken, match }) {
+  const { patientId } = useParams();
   const  [ patientCallData, setPatientCallData ]  = useState([])
 
   const goBack = () => {
@@ -60,14 +60,13 @@ function Patient({accessToken}) {
     console.log('fetching patient data')
     if(!accessToken) {
       // TO DO: Get state outisde of App.jsx
-      window.location.href = `${window.location.origin}/login?isLoggedIn=false`
+      window.location.href = `${window.location.origin}/login?isLoggedOut=true`
     }
     try {
     const response = await axios.get(url, { 
       headers: {
       Authorization: `Bearer ${accessToken}`,
     }})
-    console.log('this is the response', response)
     setPatientCallData([...patientCallData, response.data])
     } catch (error) {
       if(error.response) {
@@ -88,7 +87,7 @@ function Patient({accessToken}) {
 
   }
   useEffect(() => {
-    fetchPatientData('https://api.1up.health/fhir/dstu2/Patient/d47f763e7c7f/$everything')
+    fetchPatientData(`https://api.1up.health/fhir/dstu2/Patient/${patientId}/$everything`)
   }, [accessToken]);
   const totalPages = patientCallData.length
   console.log('this is the accessTOken', accessToken)
