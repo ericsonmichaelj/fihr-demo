@@ -50,7 +50,7 @@ function PatientList({accessToken}) {
   }, []);
   return (
     <Container style={{marginTop: '1em'}}>
-      <h2>Please Select the following patients:</h2>
+      <h2>Click on a patient to learn more:</h2>
       <div>
         { patientList.map((entry) => {
           console.log(entry.fullUrl)
