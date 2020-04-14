@@ -57,10 +57,14 @@ function Patient({accessToken, match }) {
   }
 
   const fetchPatientData = async(url, previousData) => {
-    console.log('fetching patient data')
+
     if(!accessToken) {
+      const queryPath = qs.stringify({
+        isLoggedOut: true,
+        redirect: window.location.pathname
+      })
       // TO DO: Get state outisde of App.jsx
-      window.location.href = `${window.location.origin}/login?isLoggedOut=true`
+      window.location.href = `${window.location.origin}/login?${queryPath}`
     }
     try {
     const response = await axios.get(url, { 

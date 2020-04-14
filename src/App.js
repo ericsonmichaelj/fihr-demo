@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import Patient from './Patient'
+import PatientList from './PatientList'
 import Login from './Login'
 import * as axios from 'axios'
 
@@ -62,6 +63,7 @@ export default function App() {
           <Route path="/patient/:patientId">
           { attemptRetrieval ? <Patient accessToken={accessToken} />: <div>Loading Patient Page...</div> }
           </Route>
+
           <Route path="/login">
             <Login 
               handleSubmit={authenticateUser} 
@@ -72,8 +74,11 @@ export default function App() {
           <Route path="/error">
             <div style={{color: 'red'}}>Oops! Something went wrong, please contact us.</div>
           </Route>
+          <Route exact path="/">
+          { attemptRetrieval ? <PatientList accessToken={accessToken}/>: <div>Loading PatientList Page...</div> }
+          </Route>
           <Route path="*">
-            <div>Path not found, sorry</div>
+            <div>Page not found, sorry</div>
           </Route>
         </Switch>
     </Router>

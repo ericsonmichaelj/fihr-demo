@@ -35,8 +35,8 @@ export default function Login({handleSubmit, retrievedTokenFromServer, errorMess
     <Container>
       <Row style={{'flexDirection': 'column'}}>
         <Card style={{padding: '2em', alignSelf: 'center', marginTop: '3em'}}>
-          { sessionExpired ? <p style={{color: 'red'}}>Your session has expired</p> : ''}
-          { isLoggedOut ? <p style={{color: 'red'}}>Please log in to continue</p> : ''}
+          { sessionExpired && !errorMessage ? <p style={{color: 'red'}}>Your session has expired</p> : ''}
+          { isLoggedOut && !errorMessage ? <p style={{color: 'red'}}>Please log in to continue</p> : ''}
           { errorMessage ? <p style={{color: 'red'}}>{ errorMessage } </p> : ''}
           <h2>Please Login</h2>
         <form>
