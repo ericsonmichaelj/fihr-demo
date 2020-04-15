@@ -11,7 +11,12 @@ The application takes in two environmental variables
 - UPHEALTH_CLIENT_ID
 - UPHEALTH_CLIENT_SECRET
 
-UPHEALTH_CLIENT_ID and UPHEALTH_CLIENT_SECRET are the client id and secret when registering. For more information see the link below:
+Alternatively you can find the configuration in `/server/constants.js` and replace the environmental variables wit your own keys.
+
+UPHEALTH_CLIENT_ID and UPHEALTH_CLIENT_SECRET are the client id and secret when registering. 
+
+
+For more information see the link below:
 
 - https://1up.health/dev/quick-start
 
