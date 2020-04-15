@@ -65,10 +65,22 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Runs a server for local development. Will restart on any changes made
 
-## server
+### server
 
 Runs the server for production deployment.
 
 ### start:all:dev
 
 The application runs on Node 8 or higher.
+
+## Tech Debt Items
+
+- State for access token should be shared []
+- Fix linting warnings []
+- Authorization is reusable and should be avoided in components. Can go into a higher order component, or render prop []
+- Add PropTypes []
+- Repeat logic in calling services can be encapsulated in an API class []
+- Remove direct calls to the `window.location` for redirects in favor of `history.push` []
+- Need tests to avoid regressions when adding features and refactoring []
+- Avoid error page in favor of rendering errors on screen []
+- Pagination can be cached better. Moving forward should also be cached []
