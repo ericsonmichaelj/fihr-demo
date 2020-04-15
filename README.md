@@ -1,5 +1,29 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting Starting
+
+The simpliest way to get started is to run
+
+`yarn` and `yarn start:all:dev`
+
+The application takes in two environmental variables 
+
+- UPHEALTH_CLIENT_ID
+- UPHEALTH_CLIENT_SECRET
+
+UPHEALTH_CLIENT_ID and UPHEALTH_CLIENT_SECRET are the client id and secret when registering. For more information see the link below:
+
+- https://1up.health/dev/quick-start
+
+A user needs to be created in order to log in. More information on creating a user can be found here:
+
+- https://1up.health/dev/doc/user-management
+
+As soon as you log in, you will either be redirected to the homepage or to where you were before going to the login page.
+
+On the homepage, select a patient and you will be directed to a formatted page of the $everything Query.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -37,32 +61,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### server:dev
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Runs a server for local development. Will restart on any changes made
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## server
 
-### Code Splitting
+Runs the server for production deployment.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### start:all:dev
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The application runs on Node 8 or higher.

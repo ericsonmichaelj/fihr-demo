@@ -50,7 +50,7 @@ function PatientList({accessToken}) {
   }, []);
   return (
     <Container style={{marginTop: '1em'}}>
-      { patientList.lenth ? <h2>Click on a patient to learn more:</h2>: '' }
+      { patientList.length ? <h2>Click on a patient to learn more:</h2>: '' }
       <div>
         { patientList.map((entry) => {
           return <PatientBasicInfo entry={entry} key={entry.fullUrl} />
