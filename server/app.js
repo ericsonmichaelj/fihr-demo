@@ -3,18 +3,25 @@ const logger = require('./utils/logger');
 const bodyParser = require('body-parser')
 const app = express();
 const bearerToken = require('express-bearer-token');
-app.use(bodyParser.json())
-app.use(bearerToken());
+const process = require('process');
+const path = require('path');
+const port = process.env.PORT || 8000;
 const authenticate = require('./middleware/authenticate');
 
-app.get('/', authenticate);
+app.use(express.static(path.join(__dirname, '../build')));
+app.use(bodyParser.json())
+app.use(bearerToken());
 
 app.post('/api/login', authenticate, (req, res) => {
   res.send({accessToken: req.accessToken } )
 });
 
-app.listen(8000, () => {
-  logger.info('Listening in at port 8000');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
+
+app.listen(port, () => {
+  logger.info(`Listening in at port ${port}`);
 });
 
 module.exports = app;

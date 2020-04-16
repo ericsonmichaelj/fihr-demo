@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
     "express-bearer-token": "^2.4.0",
     "fhir-react": "^0.1.1",
     "querystring": "^0.2.0",
@@ -44,11 +45,11 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000",
   "main": "index.js",
   "author": "<ericson.michael.j@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  }
+  },
+  "proxy": "http://localhost:8000",
 }
